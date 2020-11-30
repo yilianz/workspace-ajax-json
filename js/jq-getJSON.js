@@ -1,29 +1,28 @@
-
-
-$('#exchangerates').append('<div id="rates"></div><div id="reload"></div>');
+$("#exchangerates").append('<div id="rates"></div><div id="reload"></div>');
 
 function loadRates() {
-    
-    $.getJSON('data/rates.json').done(function (data) {
-        // data
-        console.log('here');
+  $.getJSON("data/rates.json")
+    .done(function(data) {
+      // data
+      console.log("here");
 
-        var msg = '<h2>Exchange Rates</h2>';     
-        // Start message
-        alert(data["UK"]);
-        $.each(data, function (key, val) {                    // Add each rate
-            msg += '<div class="' + key + '">' + key + ': ' + val + '</div>';
-        });
-        
-        $('#rates').html(msg);
+      var msg = "<h2>Exchange Rates</h2>";
+      // Start message
+      //alert(data["UK"]);
 
-                }).fail(function () {
-        console.log("Failed");
+      $.each(data, function(key, val) {
+        // Add each rate
+        msg += '<div class="' + key + '">' + key + ": " + val + "</div>";
+      });
+
+      $("#rates").html(msg);
+    })
+    .fail(function() {
+      console.log("Failed");
     });
-
 }
 
-loadRates();                                             // Call loadRates()
+loadRates(); // Call loadRates()
 
 /*
  
@@ -53,6 +52,3 @@ loadRates();                                             // Call loadRates()
  }
  
  */
-
-
-
