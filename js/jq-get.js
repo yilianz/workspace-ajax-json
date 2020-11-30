@@ -1,19 +1,16 @@
+var keys = '<p id="keys">Answer</p>';
+$("#content").append(keys);
 
-var keys = '<p id="keys">Your Key</p>';
-$('#content').append(keys);
+var remoteaddr =
+  "https://us-central1-airesponse-1308f.cloudfunctions.net/addMessage";
 
-$('#name').blur(function(){
-    // get the file and append the data
-    var requestData = "username="+$(this).val();
-    $.get('checkUserName.php',requestData).done( function(data){
-            $('#keys').html(data);
-    }).fail(function(){
-        alert("get request failed");
+$("#clickcheck").blur(function() {
+  // get the file and append the data
+  var requestData = "message=" + $("#mesg").val();
+
+  $.get(remoteaddr, requestData)
+    .done(function() {})
+    .fail(function() {
+      alert("get request failed"); //data will still be saved
     });
-         
-
 });
-        
-    
-    
-
